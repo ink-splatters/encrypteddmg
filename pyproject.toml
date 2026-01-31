@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-encrypteddmg = "readencrcdsa:main"
+readencrcdsa = "readencrcdsa:main"
 
 [dependency-groups]
 dev = [
