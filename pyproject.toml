@@ -1,0 +1,41 @@
+[project]
+name = "encrypteddmg"
+version = "0.1.0"
+description = "Tool for analyzing and decrypting apple encrypted disk images"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Willem Hengeveld", email = "itsme@xs4all.nl" }
+]
+dependencies = [
+    "pycryptodomex>=3.23.0",
+]
+
+[project.scripts]
+# TODO: fix
+base32 = "readencrcdsa.py"
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.37.0",
+    "ruff>=0.14.14",
+    "ty>=0.0.14",
+]
+
+[tool.poe.tasks]
+typecheck = "ty check"
+lint = ["ruff:check", "typecheck"]
+fix = ["ruff:format", "ruff:fix", "typecheck"]
+
+[tool.poe.tasks."ruff:format"]
+cmd = "ruff format"
+
+[tool.poe.tasks."ruff:check"]
+cmd = "ruff check"
+
+[tool.poe.tasks."ruff:fix"]
+cmd = "ruff check --fix"
+
+[tool.poe]
+executor = { type = "uv" }
