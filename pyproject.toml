@@ -3,7 +3,7 @@ name = "encrypteddmg"
 version = "0.1.0"
 description = "Tool for analyzing and decrypting apple encrypted disk images"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 license = { file = "LICENSE" }
 authors = [
     { name = "Willem Hengeveld", email = "itsme@xs4all.nl" }
@@ -13,8 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-# TODO: fix
-base32 = "readencrcdsa.py"
+encrypteddmg = "readencrcdsa:main"
 
 [dependency-groups]
 dev = [
@@ -39,3 +38,6 @@ cmd = "ruff check --fix"
 
 [tool.poe]
 executor = { type = "uv" }
+
+[tool.uv]
+package = true
